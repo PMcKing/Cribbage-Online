@@ -14,6 +14,8 @@ def getDeck():
     deck[1] = response.json()['success']
     deck[2] = response.json()['remaining']
     
+    print "Deck was retrieved successfully." #TODO check if was success
+    
 def deal2player():
     global deck, p1Hand, p2Hand
     url = "http://deckofcardsapi.com/api/deck/" + deck[0] + "/draw/?count=12"
@@ -36,5 +38,3 @@ def deal2player():
         p2Hand[x-6] = Card(img, code, value, suit)
         
    
-getDeck()
-deal2player()

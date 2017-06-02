@@ -8,14 +8,16 @@ socketio = flask_socketio.SocketIO(app)
 
 @app.route('/')
 def hello():
-    return flask.render_template('index.html')
+	cardDeck.getDeck()
+	return flask.render_template('index.html')
     #getting desk
     
 @socketio.on('connect')
 def on_connect():
 	flask_socketio.emit('update', {
-		'data': 'Got your connection also pking works!'
+		'data': 'Working...'
 	})
+	
 
 app.run(
     host=os.getenv('IP', '0.0.0.0'),
