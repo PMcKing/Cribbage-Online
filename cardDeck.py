@@ -1,8 +1,10 @@
 import requests
+import Card
 
 deck = [None] * 3 #id, success, remaining
 
 def getDeck():
+    #gets a new shuffled deck
     global deck
     url = "http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
     response = requests.get(url)
@@ -11,8 +13,12 @@ def getDeck():
     deck[1] = response.json()['success']
     deck[2] = response.json()['remaining']
     
+def dealhandplayer():
+    global deck
+    url = "http://deckofcardsapi.com/api/deck/" + deck[0] + "/draw/?count=12"
+    response = requests.get(url)
     
-    for p in deck: print p
-    
-  
+    p1Hand = [None] * 6
+    p2Hand = [None] * 6
+   
 getDeck()
