@@ -1,6 +1,7 @@
 import os
 import flask
 import flask_socketio
+import cardDeck
 
 app = flask.Flask(__name__)
 socketio = flask_socketio.SocketIO(app)
@@ -8,6 +9,7 @@ socketio = flask_socketio.SocketIO(app)
 @app.route('/')
 def hello():
     return flask.render_template('index.html')
+    #getting desk
     
 @socketio.on('connect')
 def on_connect():
