@@ -4,4 +4,5 @@ class Card(object):
         self.code = code
         self.value = value
         self.suit = suit 
-        
+    def getValue(self):
+        print self.value

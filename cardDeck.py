@@ -1,5 +1,5 @@
 import requests
-import Card
+from Card import Card
 
 deck = [None] * 3 #id, success, remaining
 
@@ -20,5 +20,17 @@ def dealhandplayer():
     
     p1Hand = [None] * 6
     p2Hand = [None] * 6
+    
+    for x in range(0,6):
+        img = response.json()['cards'][x]['image']
+        code = response.json()['cards'][x]['code']
+        value = response.json()['cards'][x]['value']
+        suit = response.json()['cards'][x]['suit']
+        p1Hand[x] = Card(img, code, value, suit)
+        
+    for p in range(0,6):
+        p1Hand[p].getValue()
+        
    
 getDeck()
+dealhandplayer()
