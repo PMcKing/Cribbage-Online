@@ -9593,7 +9593,7 @@ var Content = exports.Content = function (_React$Component) {
                     'div',
                     null,
                     'p1hand: ',
-                    this.state.p1Hand
+                    React.createElement('img', { src: this.state.p1Hand, alt: 'boohoo', className: 'img-responsive' })
                 )
             );
         }

@@ -28,7 +28,7 @@ export class Content extends React.Component {
                 Data: {this.state.data}
             </div>
             <div>
-                p1hand: {this.state.p1Hand}
+                p1hand: <img src = {this.state.p1Hand} alt="boohoo" className="img-responsive"/>
             </div>
         </div>
         );
