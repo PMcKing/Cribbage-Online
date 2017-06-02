@@ -7,11 +7,17 @@ export class Content extends React.Component {
             super(props);
             this.state = {
                 'data': '',
+                'p1Hand': '',
+                'p2Hand': '',
+                
             };
         }
         componentDidMount() {
             Socket.on('update', (data) => {
                 this.setState(data);
+            });
+            Socket.on('hands', (p1Hand) => {
+                this.setState(p1Hand);
             });
         }
     render() {
@@ -20,7 +26,10 @@ export class Content extends React.Component {
             <h1> hello from react! </h1>
             <div>
                 Data: {this.state.data}
-           </div>
+            </div>
+            <div>
+                p1hand: {this.state.p1Hand}
+            </div>
         </div>
         );
     }

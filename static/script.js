@@ -9552,7 +9552,10 @@ var Content = exports.Content = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (Content.__proto__ || Object.getPrototypeOf(Content)).call(this, props));
 
         _this.state = {
-            'data': ''
+            'data': '',
+            'p1Hand': '',
+            'p2Hand': ''
+
         };
         return _this;
     }
@@ -9564,6 +9567,9 @@ var Content = exports.Content = function (_React$Component) {
 
             _Socket.Socket.on('update', function (data) {
                 _this2.setState(data);
+            });
+            _Socket.Socket.on('hands', function (p1Hand) {
+                _this2.setState(p1Hand);
             });
         }
     }, {
@@ -9582,6 +9588,12 @@ var Content = exports.Content = function (_React$Component) {
                     null,
                     'Data: ',
                     this.state.data
+                ),
+                React.createElement(
+                    'div',
+                    null,
+                    'p1hand: ',
+                    this.state.p1Hand
                 )
             );
         }

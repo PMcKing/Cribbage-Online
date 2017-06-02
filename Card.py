@@ -5,4 +5,6 @@ class Card(object):
         self.value = value
         self.suit = suit 
     def getValue(self):
-        print self.value
+        return self.value
+    def getImg(self):
+        return self.img; 
