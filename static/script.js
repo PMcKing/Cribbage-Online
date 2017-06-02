@@ -9533,6 +9533,8 @@ var React = _interopRequireWildcard(_react);
 
 var _MyFavoriteAnimalList = __webpack_require__(85);
 
+var _Socket = __webpack_require__(205);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -9544,17 +9546,44 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Content = exports.Content = function (_React$Component) {
     _inherits(Content, _React$Component);
 
-    function Content() {
+    function Content(props) {
         _classCallCheck(this, Content);
 
-        return _possibleConstructorReturn(this, (Content.__proto__ || Object.getPrototypeOf(Content)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (Content.__proto__ || Object.getPrototypeOf(Content)).call(this, props));
+
+        _this.state = {
+            'data': ''
+        };
+        return _this;
     }
 
     _createClass(Content, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            _Socket.Socket.on('update', function (data) {
+                _this2.setState(data);
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
-            var my_animals = ['cow', 'zebra', 'goat', 'llama'];
-            return React.createElement(_MyFavoriteAnimalList.MyFavoriteAnimalList, { animals: my_animals });
+            return React.createElement(
+                'div',
+                null,
+                React.createElement(
+                    'h1',
+                    null,
+                    ' hello from react! '
+                ),
+                React.createElement(
+                    'div',
+                    null,
+                    'Data: ',
+                    this.state.data
+                )
+            );
         }
     }]);
 

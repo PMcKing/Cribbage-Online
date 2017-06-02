@@ -11,7 +11,9 @@ def hello():
     
 @socketio.on('connect')
 def on_connect():
-    print 'Someone connected!'
+	flask_socketio.emit('update', {
+		'data': 'Got your connection also pking works!'
+	})
 
 app.run(
     host=os.getenv('IP', '0.0.0.0'),
